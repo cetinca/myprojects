@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main_content %}
+<section class="day-list">
+    {% for day in days %}
+    <div class="{{'selected' if loop.index0 == 2 else ''}}">
+        <a class="day-list__day" href="{{ url_for('index', day=day)}}">
+            <time datetime="{{ day }}">{{ day.strftime("%b-%d") }}</time>
+        </a>
+    </div>
+    {% endfor %}
+</section>
+<section class="habit-list">
+    {% for habit in habits %}
+    <div>
+        <form class="habit-form" action="{{url_for('complete')}}" method="POST">
+            <input class="habit-form__input" type="hidden" name="habit" value="{{ habit['content'] }}">
+            <input class="habit-form__input" type="hidden" name="date" value="{{ selected_day }}">
+            {% if habit["status"] == "completed" %}
+            <button disabled class="habit-form__button" type="submit">{{ habit["content"] }}</button>
+            {% else %}
+            <button class="habit-form__button" type="submit">{{ habit["content"] }}</button>
+            {% endif %}
+        </form>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
