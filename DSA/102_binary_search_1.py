@@ -1,18 +1,28 @@
-def binary_search(_list, target):
-    first_index = 0
-    last_index = len(_list) -1
+from generate_numbers import unsorted_numbers
 
-    while first_index <= last_index:
-        mid_index = (first_index + last_index) // 2
-        print(mid_index)
-        if _list[mid_index] == target:
-            return f"Index of target is {mid_index}"
-        elif mid_index < target:
-            first_index = mid_index + 1
+def binarySearch(array, x, low, high):
+    while low <= high:
+
+        mid = low + (high - low)//2
+
+        if array[mid] == x:
+            return mid
+
+        elif array[mid] < x:
+            low = mid + 1
+
         else:
-            last_index = mid_index - 1
+            high = mid - 1
+
+    return -1
 
 
-numbers = list(range(1,101))
-result = binary_search(numbers, 12)
-print(result)
+array = unsorted_numbers
+x = 4
+
+result = binarySearch(array, x, 0, len(array)-1)
+
+if result != -1:
+    print("Element is present at index " + str(result))
+else:
+    print("Not found")
