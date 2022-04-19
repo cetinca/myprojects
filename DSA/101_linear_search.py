@@ -1,12 +1,14 @@
-from string import ascii_letters
+from generate_numbers import numbers
 
-def linear_search(_list, target):
-    for l in range(len(_list)):
-        if target == _list[l]:
-            return f"Index: {l}, Target: {_list[l]}"
-    return "Target not found!"
+def lin_search(target, lst):
+    count = 0
+    for i in range(len(lst)):
+        count += 1
+        if target == lst[i]:
+            return f"Target: {target}, Index: {i}, Count: {count}"
+    return "Not found!"
 
-my_list = ascii_letters
-target = "X"
-result = linear_search(my_list, target)
-print(result)
+
+print(dict(enumerate(numbers)))
+print()
+print(lin_search(330, numbers))

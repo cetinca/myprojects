@@ -1,4 +1,4 @@
-numbers = [1, 789, 5, 75, 524, 132]
+from generate_numbers import unsorted_numbers
 
 def bubble_sort(lst):
     for i in range(len(lst) - 1):
@@ -8,4 +8,4 @@ def bubble_sort(lst):
 
     return lst
 
-print(bubble_sort(numbers))
+print(bubble_sort(unsorted_numbers))
