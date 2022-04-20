@@ -1,15 +1,17 @@
-from random import shuffle
+import random
+from generate_numbers import unsorted_numbers
 
-numbers = [1, 789, 5, 75, 524, 132]
 
-def bogo(lst):
-    while True:
-        for i in range(len(numbers) - 1):
-            if numbers[i+1] < numbers[i]:
-                shuffle(numbers)
-                break
-        else:
-            return numbers
+def sort(lst):
+  count = 0
+  while True:
+    count += 1
+    random.shuffle(lst)
+    for i in range(len(lst) - 1):
+      if lst[i] > lst[i+1]:
+        break
+    else:
+      print(count)
+      return lst
 
-bogo(numbers)
-print(numbers)
+print(sort(unsorted_numbers[:10]))
