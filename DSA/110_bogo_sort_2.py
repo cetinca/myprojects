@@ -1,17 +1,24 @@
-import random
 from generate_numbers import unsorted_numbers
+from random import shuffle
+
+numbers = unsorted_numbers[:10]
+count = 0
 
 
-def sort(lst):
-  count = 0
-  while True:
+def is_sorted(nums):
+    global count
     count += 1
-    random.shuffle(lst)
-    for i in range(len(lst) - 1):
-      if lst[i] > lst[i+1]:
-        break
-    else:
-      print(count)
-      return lst
+    for i in range(len(nums) - 1):
+        if nums[i] > nums[i + 1]:
+            return False
+    return True
 
-print(sort(unsorted_numbers[:10]))
+
+def sort(nums):
+    while not is_sorted(nums):
+        shuffle(nums)
+    return nums
+
+
+print(f"Sorted numbers: {sort(numbers)}")
+print(f"Count: {count}")
