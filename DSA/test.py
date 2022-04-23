@@ -1,24 +1,26 @@
 from generate_numbers import unsorted_numbers
-from random import shuffle
 
 numbers = unsorted_numbers[:10]
-count = 0
+
+sorted_numbers = []
 
 
-def is_sorted(nums):
-    global count
-    count += 1
-    for i in range(len(nums) - 1):
-        if nums[i] > nums[i + 1]:
-            return False
-    print(count)
-    return True
+def min_index(nums):
+    min_num = nums[0]
+    index = 0
+    for i in range(len(nums)):
+        if nums[i] < min_num:
+            min_num = nums[i]
+            index = i
+    return index
 
 
 def sort(nums):
-    while not is_sorted(nums):
-        shuffle(nums)
-    return nums
+    while len(nums):
+        min_ = nums.pop(min_index(nums))
+        sorted_numbers.append(min_)
+    return sorted_numbers
 
 
+print(numbers)
 print(sort(numbers))
