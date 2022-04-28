@@ -1,11 +1,12 @@
-def range_sum(numbers, start, end):
-    total = 0
-    for num in numbers:
-        if start <= num <= end:
-            total += num
-    return total
+from collections import Counter
+
+lst = "carrots carrots bread tomatoes onions apples tomatoes carrots tomatoes onions onions onions bread milk bread apples"
+lst = lst.split()
+
+count = {}
+for l in lst:
+    count[l] = count.get(l, 0) + 1
+
+print(count)
 
 
-input_numbers = [int(n) for n in input().split()]
-a, b =  [int(n) for n in input().split()]
-print(range_sum(input_numbers, a, b))
