@@ -1,28 +1,25 @@
-from generate_numbers import unsorted_numbers
+from generate_numbers import sorted_numbers
 
-def binarySearch(array, x, low, high):
-    while low <= high:
+def binary_search(target, lst):
+    count = 0
+    first_index = 0
+    last_index = len(lst) - 1
 
-        mid = low + (high - low)//2
-
-        if array[mid] == x:
-            return mid
-
-        elif array[mid] < x:
-            low = mid + 1
-
+    while first_index <= last_index:
+        mid = (first_index + last_index) // 2 
+        count += 1
+        if target == lst[mid]:
+            return f"Target: {target}, Index: {mid}, Count: {count}"
+        elif target < lst[mid]:
+            last_index = mid - 1
         else:
-            high = mid - 1
+            first_index = mid + 1
 
-    return -1
+    return f"Count: {count}, not found!"
 
 
-array = unsorted_numbers
-x = 4
+print(dict(enumerate(sorted_numbers)))
+for n in sorted_numbers:
+    print(binary_search(n, sorted_numbers))
 
-result = binarySearch(array, x, 0, len(array)-1)
-
-if result != -1:
-    print("Element is present at index " + str(result))
-else:
-    print("Not found")
+print(binary_search(938, sorted_numbers))
