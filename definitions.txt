@@ -1,4 +1,0 @@
-first_to_second 999
-second_to_meter 1.6
-miles_to_meter 1.6
-miles_to_meter 1.6
