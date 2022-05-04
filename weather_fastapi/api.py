@@ -9,7 +9,6 @@ from weather_api import get_weather
 from datetime import datetime
 import os
 
-cities = []
 
 def init():
     """Create a database
