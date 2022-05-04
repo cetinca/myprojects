@@ -2,8 +2,6 @@
 """A program to read realy time weather data from internet and to provide this data to local clients
 """
 
-from lib2to3.pgen2.token import OP
-from time import time
 from fastapi import FastAPI, Path, HTTPException, status, Request
 from typing import Optional
 from pydantic import BaseModel
@@ -82,5 +80,5 @@ def update_city(name: str):
             c.state = weather["state"]
             c.temperature = weather["temp"]
             c.date_time = time_now()
-        return c
+            return c
     return {"message": "No city found with that name!"}
