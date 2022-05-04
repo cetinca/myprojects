@@ -2,6 +2,8 @@
 """A program to read realy time weather data from internet and to provide this data to local clients
 """
 
+from lib2to3.pgen2.token import OP
+from time import time
 from fastapi import FastAPI, Path, HTTPException, status, Request
 from typing import Optional
 from pydantic import BaseModel
@@ -11,13 +13,20 @@ import os
 
 cities = []
 
+def init():
+    """Create a database
+    """
+    pass
+
+def time_now():
+    return datetime.strftime(datetime.utcnow(), "%Y-%m-%d %H:%M:%S")
 
 class City(BaseModel):
     """City class to create city object."""
     name: str
     state: Optional[str] = None
     temperature: Optional[float] = None
-    date_time = datetime.utcnow()
+    date_time: Optional[str] = time_now()
 
 class CityUpdate(BaseModel):
     """Not in use rigth now."""
@@ -25,13 +34,9 @@ class CityUpdate(BaseModel):
     state: Optional[str] = None
     temperature: Optional[float] = None
 
-def init():
-    pass
-
 cities = []
 app = FastAPI()
 init()
-key = os.urandom(24)
 
 
 @app.get("/")
@@ -53,7 +58,7 @@ def add_city(city: City):
     city.name = city.name.capitalize()
     city.state = weather["state"]
     city.temperature = weather["temp"]
-    city.date_time = datetime.utcnow()
+    city.date_time = time_now()
     cities.append(city)
     return city
 
@@ -76,5 +81,6 @@ def update_city(name: str):
                 return {"message": "An unknown error occured!"}
             c.state = weather["state"]
             c.temperature = weather["temp"]
-            c.date_time = datetime.utcnow()
+            c.date_time = time_now()
+        return c
     return {"message": "No city found with that name!"}
