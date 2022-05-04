@@ -1,5 +1,5 @@
 # api.py module
-"""A program to read realy time weather data from internet and to provide this data to local clients
+"""A program to read real time weather data from internet and to provide this data to local clients
 """
 
 from fastapi import FastAPI, Path, HTTPException, status, Request
