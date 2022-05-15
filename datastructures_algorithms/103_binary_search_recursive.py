@@ -1,5 +1,6 @@
 from generate_numbers import sorted_numbers
 
+
 def binary_search(_list, target):
     if len(_list) == 0:
         return "Item not found!"
@@ -9,7 +10,7 @@ def binary_search(_list, target):
     if _list[mid_point] == target:
         return f"Item is {_list[mid_point]}"
     elif _list[mid_point] < target:
-        return binary_search(_list[mid_point+1:], target)
+        return binary_search(_list[mid_point + 1:], target)
     else:
         return binary_search(_list[:mid_point], target)
 
