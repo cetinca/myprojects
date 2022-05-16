@@ -28,5 +28,5 @@ while True:
     try:
         print(next(nums))
     except StopIteration as e:
-        print(e)
+        print(type(e))
         break

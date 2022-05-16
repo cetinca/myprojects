@@ -1,8 +1,5 @@
-from heapq import merge
-from posixpath import split
-import snoop
+from datastructures_algorithms.generate_numbers import unsorted_hundred
 
-@snoop
 def merged_sort(_list):
     if len(_list) <= 1:
         return _list
@@ -13,9 +10,11 @@ def merged_sort(_list):
 
     return merge(left, right)
 
+
 def split(_list):
     mid = len(_list) // 2
     return (_list[:mid], _list[mid:])
+
 
 def merge(left, right):
     l = []
@@ -32,21 +31,22 @@ def merge(left, right):
     while i < len(left):
         l.append(left[i])
         i += 1
-    
+
     while j < len(right):
         l.append(right[j])
         j += 1
 
     return l
 
-def verify_sorted(list):
 
+def verify_sorted(list):
     if len(list) <= 1:
         return True
 
     return list[0] < list[1] and verify_sorted(list[1:])
 
-my_list = [99, 54, 78 , 1, 3, 89, -5, 75]
+
+my_list = unsorted_hundred
 
 sorted = merged_sort(my_list)
 print(sorted)
