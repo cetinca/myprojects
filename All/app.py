@@ -1,44 +1,11 @@
-from datastructures_algorithms.generate_numbers import unsorted_hundred
+import random
 
+words = ["car", "apple", "blue"]
 
-def merge(left, right):
-    lst = []
-    i = 0
-    j = 0
+word = random.choice(words)
 
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            lst.append(left[i])
-            i += 1
-        else:
-            lst.append(right[j])
-            j += 1
-    while i < len(left):
-        lst.append(left[i])
-        i += 1
-    while j < len(right):
-        lst.append(right[j])
-        j += 1
+print("-" in word or "" in word)
 
-    return lst
-
-
-def split_arr(arr):
-    mid = len(arr) // 2
-    left, right = arr[:mid], arr[mid:]
-    return left, right
-
-
-def merged_sort(arr):
-    if len(arr) <= 1:
-        return arr
-
-    left, right = split_arr(arr)
-    left = merged_sort(left)
-    right = merged_sort(right)
-
-    return merge(left, right)
-
-
-print(unsorted_hundred)
-print(merged_sort(unsorted_hundred))
+# while "_" in word or "" in word:
+#     word = random.choice(words)
+#     print(word)
