@@ -1,4 +1,4 @@
-from datastructures_algorithms.generate_numbers import unsorted_hundred
+from datastructures.generate_numbers import unsorted_hundred
 
 def merged_sort(_list):
     if len(_list) <= 1:
